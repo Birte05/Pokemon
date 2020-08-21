@@ -1,115 +1,106 @@
-.body {
-    background-color: lightBlue;
-    text-align: center;
-    font-size: 25px;
-  }
-  
-  .flex-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .flex-item {
-    background-color: black;
-    width: 100px;
-    margin: 10px;
-  }
-  
-  .pokemon_list {
-    background-color: #darkblue;
-    color: #white;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 3px;
-  }
-  
-  #buttonlist {
-    display: none
-  }
-  
-  #buttonlist.is-visible {
-    display: flex;
-    margin: 0 auto;
-    padding: 10px;
-    border: none;
-  }
-  
-  #loading.is-visible {
-    display: block;
-    margin: 0 auto;
-    padding: 50px;
-  }
-  
-  .modal {
-    margin: auto;
-    display: inline-block;
-    box-sizing: border-box;
-    /* background: #fff; */
-    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-    padding: 15px;
-    width: 100%;
-    max-width: 600px;
-    text-align: left;
-    border-radius: 10px;
-  }
-  
-  .modal h1 {
-    text-align: center;
-    text-transform: capitalize;
-    letter-spacing: 0.25rem;
-    /* margin-top: 10px; */
-  }
-  
-  .modal p {
-    text-align: center;
-    margin-bottom: 0;
-    letter-spacing: 0.1rem;
-    text-transform: capitalize;
-  }
-  
-  #modal-container.is-visible {
-    position: fixed;
-    padding: 20px;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    /* to show it above other content */
-    z-index: 999;
-    /*to allow scrolling if the screen is not high enough*/
-    overflow: auto;
-    /* this is used to center the modal */
-    text-align: center;
-    display: block;
-  }
-  
-  .modal-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    height: auto;
-  }
-  
-  .modal-close {
-    letter-spacing: 1px;
-    background-color: #3b5998;
-    /* border-radius: 6px; */
-    border-radius: 0.35em;
-    display: block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: 13px;
-    padding: 6px 6px;
-    text-decoration: none;
-    float: right;
-  }
-  
-  .modal-close:hover {
-    background-color: #627aad;
-  }
-  
+body {
+  background-color: lightBlue;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace, Helvetica, sans-serif;
+  font-size: 25px;
+}
+
+.button {
+  display: inline-block;
+  border: thin ridge rgb(126, 124, 124);
+  flex: 1 1 25px;
+  width: 30%;
+  height: 10%;
+  padding:5%;
+  padding-bottom: 5%;
+  font-size: 25px;
+  background-color: rgba(219, 217, 217, 0.719);
+  transition: 3s, opacity;
+}
+
+/* Shows pokemons in modal*/
+.pokemon_list {
+  /*background-color: #darkblue;*/
+ /* color: #white;*/
+  text-decoration: none;
+  padding: 5%;
+  border-radius: 3px;
+} 
+
+/*styles the modal*/
+.modal {
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: #fff;
+  background-image: linear-gradient(120deg, #8fd3f4 0%, #8fd3f4 100%);
+  padding: 15px;
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+  border-radius: 10px;<
+}
+
+.modal h1 {
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 0.25rem;
+  /* margin-top: 10px; */
+}
+
+.modal p {
+  text-align: center;
+  margin-bottom: 0;
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+}
+
+#modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* to show it above other content */
+  z-index: 999;
+  /*to allow scrolling if the screen is not high enough*/
+  /*overflow: auto;
+  /* this is used to center the modal */
+  text-align: center;
+  display: block;
+}
+
+.modal-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: auto;
+}
+
+/* Close button within the modal*/
+.modal-close {
+  /*letter-spacing: 1px;*/
+  background-color: #3b5998;
+  /* border-radius: 6px; */
+  /*border-radius: 0.35em;*/
+  display: block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 6px 6px;
+  text-decoration: none;
+  float: right;
+}
+
+.modal-close:hover {
+  background-color: #627aad;
+}
