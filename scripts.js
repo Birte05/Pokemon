@@ -1,5 +1,5 @@
 var pokemonRepository = (function () { //*adds an IIFE to the code
-  var $modalContainer = $('#modal-container');
+  var modalContainer = document.querySelector('#modal-container');
   var pokemonList = [];
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon';
   //add each pokemon with attributes to pokemonList
@@ -17,21 +17,21 @@ var pokemonRepository = (function () { //*adds an IIFE to the code
   function addListItem(pokemon) {
     // var pokemonList = document.querySelector('ul'); // => NodeElement
     // var pokemonList = document.querySelectorAll('ul'); // => NodeList
-    var pokemonList = $('ul'); // => jQuerySelection
+    var pokemonList = document.querySelector('.pokemon-list'); // => jQuerySelection
     //create a new li-item with button for each pokemon
-    var listItem = $('<li></li>');
-    var button = $('<button></button>');
+    var listItem = document.createElement('li');
+    var button = document.createElement('button');
     //append listItem to unordered list as its child
     pokemonList.append(listItem);
     //append the button to list item as its child
     listItem.append(button);
     //button shows the name of the current pokemon
-    button.text(pokemon.name);
-    button.addClass('pokemon-name'); // instead of pokemon-name list-button?
+    button.innerText = pokemon.name;
+    button.classList.add('pokemon-name'); // instead of pokemon-name list-button?
     //give button a custom style from styles.css to overwrite default styling
-    listItem.addClass('button');
+    listItem.classList.add('button');
     //give the button a function when it is clicked
-    button.on('click', function(event) {
+    button.addEventListener('click', function(event) {
     //calls function showDetails to show attributes from each pokemon
       showDetails(pokemon);
     });
@@ -76,36 +76,36 @@ var pokemonRepository = (function () { //*adds an IIFE to the code
 
   //adds a modal to display information with close button, title and text
   function showModal(item) {
-    var modalContainer = $('#modal-container')
+    //var modalContainer = $('#modal-container')
     // Clear all existing modal content
-    modalContainer.html('');
+    modalContainer.innerHTML = '';
 
-    var modal = $('<div></div>');
-    modal.addClass('modal');
+    var modal = document.createElement('div');
+    modal.classList.add('modal');
 
     // Add the new modal content
-    var closeButtonElement = $('<button></button>');
-    closeButtonElement.addClass('modal-close');
-    closeButtonElement.text('Close');
-    closeButtonElement.on('click', hideModal);
+    var closeButtonElement = document.createElement('button');
+    closeButtonElement.classList.add('modal-close');
+    closeButtonElement.innerText = 'Close';
+    closeButtonElement.addEventListener('click', hideModal);
 
-    var titleElement = $('<h1></h1>');
-    titleElement.text(item.name);
+    var titleElement = document.createElement('h1');
+    titleElement.innerText = item.name;
 
-    var contentElement = $('<p></p>');
-    contentElement.text('Height: ' + item.height);
+    var contentElement = document.createElement('p');
+    contentElement.innerText = 'Height: ' + item.height;
 
-    var imgElement = $('<img>');
-    imgElement.addClass('modal-img');
-    imgElement.attr("src", item.imageUrl);
+    var imgElement = document.createElement('img');
+    imgElement.classList.add('modal-img');
+    imgElement.src = item.imageUrl;
 
-    modal.append(closeButtonElement);
-    modal.append(titleElement);
-    modal.append(imgElement);
-    modal.append(contentElement);
-    modalContainer.append(modal);
+    modal.appendChild(closeButtonElement);
+    modal.appendChild(titleElement);
+    modal.appendChild(imgElement);
+    modal.appendChild(contentElement);
+    modalContainer.appendChild(modal);
 
-    modalContainer.addClass('is-visible');
+    modalContainer.classList.add('is-visible');
   }
 
   function hideModal() {
@@ -113,6 +113,7 @@ var pokemonRepository = (function () { //*adds an IIFE to the code
     modalContainer.removeClass('is-visible');
     modalContainer.html("");
   }
+
 
   // if modal is open register click on `esc` key and close modal
   window.addEventListener('keydown', (e) => {
